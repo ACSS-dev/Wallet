@@ -1,0 +1,396 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=cyrillic');
+
+@font-face {
+  font-family: "Graphik";
+  src: url('../font/GraphikLCG-Light.otf');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Graphik";
+  src: url('../font/GraphikLCG-Regular.otf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Graphik";
+  src: url('../font/GraphikLCG-Medium.otf');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Graphik";
+  src: url('../font/GraphikLCG-Bold');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Graphik";
+  src: url('../font/GraphikLCG-Black');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@media (min-width: 768px) {
+
+  body .page-header .container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .container {
+    width: 720px;
+  }
+
+  .inp {
+    font-size: 17px;
+  }
+  .select-header {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+  }
+
+  .page-header__gas-price-select {
+    margin-left: 30px;
+  }
+
+  .page-header__token-select {
+    margin-left: 30px;
+  }
+
+  .page-main {}
+
+  .main-navigation li {
+    white-space: nowrap;
+  }
+
+  .page-main__main-navigation {
+    overflow: visible;
+    width: 720px;
+  }
+
+  .standart-block {
+    width: 100%;
+  }
+
+  h1 {
+    text-align: left;
+    align-self: flex-start;
+    font-family: Graphik;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    font-size: 33px;
+
+    color: #0D0D0D;
+
+
+  }
+
+  .inp {
+    width: 100%;
+  }
+
+  .existing-contract-select {
+    width: 320px;
+  }
+
+  .two-rows {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .JSON-Interface-inp {
+    width: 100%;
+  }
+
+  .btn {
+    align-self: flex-start;
+  }
+
+  .footer-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .logo-footer {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .logo-footer-img {
+    margin-right: 17px;
+  }
+
+  .footer-text {
+    align-self: flex-start;
+    text-align: left;
+  }
+
+  .footer-navigation-one {
+    text-align: left;
+  }
+
+  .two-cols {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .two-cols__ferst-col__info {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .two-cols__ferst-col__info p {
+    width: 200px;
+  }
+
+  .two-cols__second-col {
+    display: flex;
+  }
+
+  .two-cols__second-col__line img {}
+
+  .two-cols__second-col__info li {
+    max-width: 250px;
+  }
+
+  .two-cols__second-col__info h3 {
+    margin-left: 55px;
+  }
+  .point {
+    padding: 0;
+    margin-left: 55px;
+  }
+
+  .two-cols__second-col {
+    display: none;
+  }
+  
+  .two-cols__pass-inp {
+    width: 100%;
+  }
+}
+
+
+
+
+
+@media (min-width: 1200px) {
+
+  body .page-header .container {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .container {
+    min-width: 95%;
+  }
+
+  .page-main__main-navigation {
+    overflow: visible;
+    width: 95%;
+  }
+
+  .h1 {
+    font-size: 24px;
+  }
+
+  .standart-block {
+    padding-left: 106px;
+    padding-right: 106px;
+  }
+
+  .inp {
+    width: 540px;
+  }
+
+  .existing-contract-select {
+    width: 540px;
+  }
+
+  .JSON-Interface-inp {
+    width: 100%;
+  }
+
+  .footer-text {
+    width: 326px;
+    font-size: 13px;
+  }
+
+  .footer-navigation-one li a {
+    font-size: 13px;
+    align-self: flex-start;
+    text-align: left;
+  }
+
+  .footer-navigation-two li a {
+    font-size: 13px;
+  }
+
+  .footer-navigation-three li a {
+    font-size: 13px;
+  }
+
+  .footer-big-menu {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .inp-w {
+  width: 600px;
+}
+
+
+
+
+}
+
+@media (min-width: 1366px) {
+  .two-cols__second-col {
+    display: flex;
+  }
+
+  .two-cols__second-col__info__text {
+    font-size: 15px;
+    line-height: 26px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 21px;
+    font-size: 13px;
+    color: #0D0D0D;
+  }
+
+  .two-cols__second-col__info__text a {
+    font-size: 15px;
+    line-height: 26px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 21px;
+    font-size: 13px;
+    color: #0D0D0D;
+    text-decoration: none;
+  }
+
+  .two-cols__second-col__info__p {
+    margin-left: 0;
+  }
+
+  .two-cols__second-col {
+    display: flexs;
+  }
+  
+  .two-cols__ferst-col__info {
+    width: 680px;
+  }
+  
+  .two-cols__ferst-col__info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .two-cols__ferst-col__info p {
+    width: 400px;
+  }
+  
+  .inp-wallet-new {
+    width: 100%;
+  }
+  
+}
+
+
+
+
+@media (min-width: 1440px) {
+
+  body .page-header .container {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .container {
+    min-width: 1372px;
+  }
+
+  .page-main__main-navigation {
+    overflow: visible;
+    width: 1372px;
+  }
+
+  .h1 {
+    font-size: 24px;
+  }
+
+  .standart-block {
+    padding-left: 106px;
+    padding-right: 106px;
+  }
+
+  .inp {
+    width: 540px;
+  }
+
+  .existing-contract-select {
+    width: 540px;
+  }
+
+  .JSON-Interface-inp {
+    width: 100%;
+  }
+
+  .footer-text {
+    width: 326px;
+    font-size: 13px;
+  }
+
+
+  .footer-navigation-one li a {
+    font-size: 13px;
+    align-self: flex-start;
+    text-align: left;
+  }
+
+  .footer-navigation-two li a {
+    font-size: 13px;
+  }
+
+  .footer-navigation-three li a {
+    font-size: 13px;
+  }
+
+  .footer-big-menu {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .two-cols__ferst-col__info {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+    .inp-wallet-new {
+    width: 100%;
+  }
+
+
+
+}

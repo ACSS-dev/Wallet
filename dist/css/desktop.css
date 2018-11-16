@@ -1,0 +1,714 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=cyrillic');
+
+@font-face {
+  font-family: "Graphik";
+  src: url('../font/GraphikLCG-Light.otf');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Graphik";
+  src: url('../font/GraphikLCG-Regular.otf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Graphik";
+  src: url('../font/GraphikLCG-Medium.otf');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Graphik";
+  src: url('../font/GraphikLCG-Bold');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Graphik";
+  src: url('../font/GraphikLCG-Black');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@media (min-width: 768px) {
+
+  body .page-header .container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .container {
+    width: 720px;
+  }
+
+  .select-header {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+  }
+
+  .page-header__gas-price-select {
+    margin-left: 30px;
+  }
+
+  .page-header__token-select {
+    margin-left: 30px;
+  }
+
+  .page-main {}
+
+  .main-navigation li {
+    white-space: nowrap;
+  }
+
+  .page-main__main-navigation {
+    overflow: visible;
+    width: 720px;
+  }
+
+  .standart-block {
+    width: 720px;
+  }
+
+  .wallet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .wallet-text {
+    width: 400px;
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .vallet-two-row {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .first-vallet-two-row-h2 {
+    margin-top: 0;
+  }
+
+  .choose-wallet {
+    align-self: flex-start;
+  }
+
+  h1 {
+    text-align: left;
+    align-self: flex-start;
+    font-family: Graphik;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    font-size: 33px;
+
+    color: #0D0D0D;
+
+
+  }
+
+  .inp {
+    width: 320px;
+  }
+
+  .existing-contract-select {
+    width: 320px;
+  }
+
+  .two-rows {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .JSON-Interface-inp {
+    width: 100%;
+  }
+
+  .btn {
+    align-self: flex-start;
+  }
+
+  .footer-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .logo-footer {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .logo-footer-img {
+    margin-right: 17px;
+  }
+
+  .footer-text {
+    align-self: flex-start;
+    text-align: left;
+  }
+
+  .footer-navigation-one {
+    text-align: left;
+  }
+
+  .inp-100 {
+    width: 100%;
+  }
+
+  .wallet-info-view-qr-code {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .hide-qr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .token-balance-btn-block {
+    width: 230px;
+    align-self: center;
+  }
+
+  .token-balance-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .wallet-info-view-second-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .account-address {}
+
+  .btn-stroke {
+    align-self: center;
+  }
+
+  .token-view-block {
+    align-self: center;
+  }
+
+  .token-balances inp {
+    width: 312px;
+  }
+
+  .inp-w {
+    width: 100%;
+  }
+
+}
+
+
+@media (min-width: 1200px) {
+
+  .two-rows-wallet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+
+
+  .token-balances inp {
+    width: 312px;
+  }
+
+  body .page-header .container {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .container {
+    min-width: 95%;
+  }
+
+  .page-main__main-navigation {
+    overflow: visible;
+    width: 95%;
+  }
+
+  .h1 {
+    font-size: 24px;
+  }
+
+  .standart-block {
+    padding-left: 106px;
+    padding-right: 106px;
+    width: 1200px;
+  }
+
+
+  .two-rows-wallet {
+    width: 1200px;
+    justify-content: space-between;
+  }
+
+  .wallet-info-view-firs-column {
+    width: 868px;
+  }
+
+  .wallet-info-view-second-column {
+    width: 315px;
+  }
+
+  .wallet-info-view-form {
+    width: 868px;
+  }
+
+  .wallet-info-view-qr-code {
+    width: 868px;
+  }
+
+
+  .inp {
+    width: 540px;
+  }
+
+  .existing-contract-select {
+    width: 540px;
+  }
+
+  .JSON-Interface-inp {
+    width: 100%;
+  }
+
+  .footer-text {
+    width: 326px;
+    font-size: 13px;
+  }
+
+  .footer-navigation-one li a {
+    font-size: 13px;
+    align-self: flex-start;
+    text-align: left;
+  }
+
+  .footer-navigation-two li a {
+    font-size: 13px;
+  }
+
+  .footer-navigation-three li a {
+    font-size: 13px;
+  }
+
+  .footer-big-menu {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .wallet-text {
+    width: 586px;
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .form-btn-last {}
+
+  .form-btn {}
+
+
+  body .account-address {
+    width: 315px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  body .equivalent-values {
+    width: 315px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .token-balances {
+    width: 315px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .token-balance-text {
+    text-align: left;
+  }
+
+  .token-balance-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+
+
+  .token-balance-inp {
+    width: 100%;
+  }
+
+  .btn-save {
+    align-self: flex-start;
+  }
+
+  .token-view-block {
+    align-self: flex-start;
+  }
+
+  .h-m40 {
+    margin-top: 40px;
+  }
+
+  .block-of-table-equivalent-values {
+    align-self: flex-start;
+  }
+
+  .equivalent-values-mimi-text {
+    align-self: flex-start;
+    font-size: 11px;
+    text-align: left;
+    line-height: 18px;
+
+  }
+
+  .equivalent-values-cell {
+    font-size: 12px;
+    width: 70px;
+  }
+
+  .tocen-balance-form-name {
+    font-size: 12px;
+  }
+
+  .token-view li {
+    font-size: 10px;
+  }
+
+  .user-heading {
+    align-self: flex-start;
+  }
+
+  .account-address {
+    align-items: flex-start;
+  }
+
+  .user-adress-hash {
+    text-align: left;
+    overflow: hidden;
+    width: 150px;
+  }
+
+  .cont-user-inform {
+    width: 220px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .inp-100 {
+    width: 100%;
+  }
+
+  .inp-w {
+    width: 100%;
+  }
+
+  .align-form-two-rows {
+    width: 100%;
+  }
+
+  .existing-contract-select {
+    width: 540px;
+  }
+
+  .contact-adress-inp {
+    width: 540px;
+  }
+
+  .interact-h2 {
+    text-align: left;
+  }
+
+  .interact-block {
+    width: 100%;
+  }
+
+  .standart-block {
+    width: 100%;
+  }
+
+  .wallet-info-view-heder {
+    width: 1200px;
+  }
+
+
+
+}
+
+
+
+
+@media (min-width: 1440px) {
+
+  body .page-header .container {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .container {
+    min-width: 1372px;
+  }
+
+  .page-main__main-navigation {
+    overflow: visible;
+    width: 1372px;
+  }
+
+  .h1 {
+    font-size: 24px;
+  }
+
+  .standart-block {
+    padding-left: 106px;
+    padding-right: 106px;
+  }
+
+  .inp {
+    width: 540px;
+  }
+
+  .existing-contract-select {
+    width: 540px;
+  }
+
+  .JSON-Interface-inp {
+    width: 100%;
+  }
+
+  .footer-text {
+    width: 326px;
+    font-size: 13px;
+  }
+
+
+  .footer-navigation-one li a {
+    font-size: 13px;
+    align-self: flex-start;
+    text-align: left;
+  }
+
+  .footer-navigation-two li a {
+    font-size: 13px;
+  }
+
+  .footer-navigation-three li a {
+    font-size: 13px;
+  }
+
+  .footer-big-menu {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .equivalent-values {
+    width: 415px;
+    padding-left: 52px;
+    padding-right: 52px;
+  }
+
+  .wallet-info-view-first-column {
+    width: 943px;
+  }
+
+  .wallet-info-view-second-column {
+    width: 414px;
+  }
+
+  .two-rows-wallet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 1376px;
+    ;
+  }
+
+  .inp-100 {
+    width: 100%;
+  }
+
+  .qr-heading {
+    text-align: left;
+  }
+
+  .hide-qr .qr-heading {
+    align-self: flex-start;
+  }
+
+  .account-address {
+    align-items: flex-start;
+  }
+
+  .user-adress-hash {
+    text-align: left;
+    overflow: hidden;
+    width: 150px;
+  }
+
+  .cont-user-inform {
+    width: 220px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .token-balances {
+    box-sizing: border-box;
+
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .user-heading {
+    align-self: flex-start;
+    text-align: left;
+  }
+
+  .token-balances {
+    width: 300px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .token-balance-text {
+    text-align: left;
+  }
+
+  .token-balance-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+
+
+  .token-balance-inp {
+    width: 100%;
+  }
+
+  .btn-save {
+    align-self: flex-start;
+  }
+
+  .token-view-block {
+    align-self: flex-start;
+  }
+
+  .h-m40 {
+    margin-top: 40px;
+  }
+
+  .block-of-table-equivalent-values {
+    align-self: flex-start;
+  }
+
+  .equivalent-values-mimi-text {
+    align-self: flex-start;
+    font-size: 11px;
+    text-align: left;
+    line-height: 18px;
+
+  }
+
+  .equivalent-values-cell {
+    font-size: 12px;
+    width: 70px;
+  }
+
+  .tocen-balance-form-name {
+    font-size: 12px;
+  }
+
+  .token-view li {
+    font-size: 10px;
+  }
+
+  .wallet-info-view-heder {
+    width: 1370px;
+  }
+
+  body .two-rows-wallet {
+    width: 1370px;
+    justify-content: space-between;
+  }
+
+  .wallet-info-view-first-column {
+    width: 942px;
+  }
+
+  .wallet-info-view-second-column {
+    width: 415px;
+  }
+
+  .wallet-info-view-form {
+    width: 942px;
+  }
+
+  .wallet-info-view-qr-code {
+    width: 942px;
+  }
+
+  body .account-address {
+    width: 415px;
+  }
+
+  body .token-balances {
+    width: 415px;
+  }
+
+  body .equivalent-values {
+    width: 415px;
+  }
+
+  .inp-w {
+    width: 100%;
+  }
+
+  .existing-contract-select {
+    width: 474px;
+  }
+
+  .contact-adress-inp {
+    width: 474px;
+  }
+
+  .wallet-info-view-heder {
+    width: 1370px;
+  }
+
+
+
+}

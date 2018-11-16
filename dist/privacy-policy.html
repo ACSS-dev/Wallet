@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mewApp">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Foton Wallet</title>
+<meta property="og:title" content="MyEtherWallet.com: Your Key to Ethereum">
+<meta property="og:site_name" content="MyEtherWallet.com: Your Key to Ethereum">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=cyrillic">
+
+<link rel="stylesheet" href="css/etherwallet-master.min.css?lm11112018">
+
+<script type="text/javascript" src="js/etherwallet-static.min.js?lm11112018"></script>
+<script type="text/javascript" src="js/etherwallet-master.js?lm11112018"></script>
+<meta name="description" content="">
+<meta property="og:description"  content="">
+<meta name="twitter:description" content="">
+<meta name="robots" content="index,follow">
+<meta name="googlebot" content="index,follow">
+<meta name="google-site-verification" content="IpChQ00NYUQuNs_7Xs6xlnSdzalOlTUYbBsr8f7OpvM" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+<meta name="apple-mobile-web-app-title" content="Foton Wallet">
+<meta name="application-name" content="Foton Wallet">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<script type="application/ld+json">
+{
+"@context": "http://schema.org",
+"@type" : "Organization",
+"name" : "MyEtherWallet",
+"legalName" : "MyEtherWallet Inc",
+"url" : "https://www.myetherwallet.com/",
+"contactPoint" : [{
+  "@type" : "ContactPoint",
+  "email" : "support@myetherwallet.com",
+  "url"   : "https://myetherwallet.com",
+  "contactType" : "customer service"
+}],
+"logo" : "https://www.myetherwallet.com/images/myetherwallet-logo.png",
+"description": "MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely.",
+"sameAs" : [
+  "https://www.myetherwallet.com/",
+  "https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm",
+  "https://www.facebook.com/MyEtherWallet/",
+  "https://twitter.com/myetherwallet",
+  "https://medium.com/@myetherwallet",
+  "https://kb.myetherwallet.com/",
+  "https://github.com/kvhnuke/etherwallet",
+  "https://github.com/MyEtherWallet",
+  "https://kvhnuke.github.io/etherwallet/","https://myetherwallet.slack.com/"
+]
+}
+</script>
+</head>
+<body>
+
+<header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
+	<div class="page-header">
+<section class="header-branding container">
+      <a class="brand" href="." aria-label="Go to homepage">
+        <img src="images/foton-logo.svg"   height="40" width="140" alt="Foton" />
+        
+      </a>
+    <div class="select-header">
+	<div class="page-header__language-and-mini-logo">
+		<div style="display: flex; align-items: center;">
+	    <p class="small version">3.25.0</p>
+		    <span class="dropdown dropdown-lang" ng-cloak>
+		      <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
+		      <ul class="dropdown-menu" ng-show="dropdown">
+		        <li><a ng-class="{true:'active'}[curLang=='English']"         ng-click="changeLanguage('en','English'        )"> English         </a></li>
+		      </ul>
+		    </span>
+		</div>
+		<img src="images/logo-mini.svg" alt="logo mini" width="25" height="25" style="margin-left: 15px;">
+	</div>
+    <span class="dropdown dropdown-gas" ng-cloak>
+      <a tabindex="0" aria-haspopup="true" aria-label="adjust gas price" class="dropdown-toggle btn-white" ng-click="dropdownGasPrice = !dropdownGasPrice" click-out="dropdownGasPrice = false">
+        <span translate="OFFLINE_Step2_Label_3">Gas Price</span>:
+          {{gas.value}} Gwei
+          <i class="caret"></i>
+      </a>
+      <ul class="dropdown-menu" ng-show="dropdownGasPrice">
+        <div class="header--gas">
+          <span translate="OFFLINE_Step2_Label_3">Gas Price</span>:
+          {{gas.value}} Gwei
+          <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" step="{{gas.step}}" ng-change="gasChanged()"/>
+          <p class="small col-xs-4 text-left"> <!--translate="GAS_Price_1"-->
+            Really, really slow
+          </p>
+          <p class="small col-xs-4 text-center"> <!--translate="GAS_Price_2"-->
+            Maybe Fast?
+          </p>
+          <p class="small col-xs-4 text-right"> <!--translate="GAS_Price_3"-->
+            Fast
+          </p>
+          <br />
+          <p class="small" style="white-space:normal;font-weight:300;margin: 2rem 0 0;" translate="GAS_PRICE_Desc"></p>
+          <a class="small"
+             translate="x_ReadMore"
+             href="https://kb.myetherwallet.com/gas/what-is-gas-ethereum.html"
+             target="_blank"
+             rel="noopener noreferrer"></a>
+        </div>
+      </ul>
+    </span>
+
+    <!-- Warning: The separators you see on the frontend are in styles/etherwallet-custom.less. If you add / change a node, you have to adjust these. Ping tayvano if you're not a CSS wizard -->
+    <span class="dropdown dropdown-node" ng-cloak>
+      <a tabindex="0"
+         aria-haspopup="true"
+         aria-label="change node. current node {{curNode.name}} node by {{curNode.service}}"
+         class="dropdown-toggle btn-white"
+         ng-click="dropdownNode = !dropdownNode"
+         ng-attr-title="{{curNode.name}} ({{curNode.service}})"
+         click-out="dropdownNode = false">
+           <span translate="X_Network">Network:</span>
+           {{curNode.name}}
+           <small>({{curNode.service}})</small>
+           <i class="caret"></i>
+      </a>
+      <ul class="dropdown-menu" ng-show="dropdownNode">
+        <li ng-repeat="(key, value) in nodeList">
+          <a ng-class="{true:'active'}[curNode == key]" ng-attr-title="{{value.name}} ({{value.service}})" ng-click="changeNode(key)">
+            {{value.name}}
+            <small> ({{value.service}}) </small>
+            <img ng-show="value.service=='Custom'" src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" ng-click="removeNodeFromLocal(value.name)"/>
+          </a>
+        </li>
+        <li>
+          <a ng-click="customNodeModal.open(); dropdownNode = !dropdownNode;" translate="X_Network_Custom">
+            Add Custom Network / Node
+          </a>
+        </li>
+      </ul>
+    </span>
+
+    </div>
+</section>
+</div>
+
+<nav role="navigation" aria-label="main navigation" class="container nav-container overflowing page-main__main-navigation">
+	<div class="nav-scroll">
+		
+	
+    <ul class="main-navigation nav-inner">
+      <li ng-repeat="tab in tabNames track by $index" \
+          class="nav-item {{tab.name}}" \
+          ng-show="tab.mew"
+          ng-class="{'activ-link': $index==gService.currentTab}"
+          ng-click="tabClick($index)">
+            <a tabindex="0" aria-label="nav item: {{tab.name | translate}}" translate="{{tab.name}}"></a>
+      </li>
+      <li class="nav-item" ng-show="MEWconnectActive" ng-cloak>
+        <div style="margin-left: 20px;">
+          <div ng-show="MEWconnectState == 0" style="border-bottom: solid 2px #929292">
+            <h4 ><img src="images/MEWconnectLogo.svg" width="120" height="26"> Not Connected</h4>
+          </div>
+          <div ng-show="MEWconnectState == 1" style="border-bottom: solid 2px #1995be">
+            <h4><img src="images/MEWconnectLogo.svg" width="120" height="26" style="margin-right: 10px">Preparing Connection</h4>
+          </div>
+          <div ng-show="MEWconnectState == 2" style="border-bottom: solid 2px #23aeb2">
+            <h4 ><img src="images/MEWconnectLogo.svg" width="120" height="26"> Connected</h4>
+          </div>
+          <div ng-show="MEWconnectState == 3" style="border-bottom: solid 2px #febe1a">
+            <h4><img src="images/MEWconnectLogo.svg" width="120" height="26"> Timed Out</h4>
+          </div>
+          <div ng-show="MEWconnectState == 4" style="border-bottom: solid 2px #e74d41">
+            <h4><img src="images/MEWconnectLogo.svg" width="120" height="26"> Disconnected</h4>
+          </div>
+        </div>
+      </li>
+    </ul>
+    </div>
+  </div>
+  <a aria-hidden="true"
+     ng-show="showRightArrow"
+     class="nav-arrow-right"
+     ng-click="scrollRight(100);"
+     ng-mouseover="scrollHoverIn(false,2);"
+     ng-mouseleave="scrollHoverOut()">&#187;</a>
+</nav>
+ <article class="modal fade" id="customNodeModal" tabindex="-1">
+  <section class="modal-dialog">
+    <section class="modal-content">
+
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close Dialog">&times;</button>
+
+        <h2 class="modal-title text-info" translate="NODE_Title"> Set Up Your Custom Node </h2>
+
+        <p class="small"><a href="https://kb.myetherwallet.com/networks/run-your-own-node-with-myetherwallet.html" target="_blank" rel="noopener noreferrer"> Instructions can be found here </a></p>
+
+        <div ng-show="browserProtocol!='https:'" class="alert alert-danger small" translate="NODE_Warning">
+          Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to your local node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)</a>.
+        </div>
+
+        <section class="row">
+          <div class="clearfix col-xs-12">
+            <label translate="NODE_Name">Node Name</label>
+            <input class="form-control"
+                   type="text"
+                   placeholder="My ETH Node"
+                   ng-model="customNode.name"
+                   ng-class="Validator.isAlphaNumericSpace(customNode.name) ? 'is-valid' : 'is-invalid'">
+          </div>
+
+          <div class="clearfix col-xs-9">
+            <label>URL</label>
+            <input class="form-control" type="text" placeholder="http://127.0.0.1" ng-model="customNode.url" ng-class="checkNodeUrl(customNode.url) ? 'is-valid' : 'is-invalid'">
+          </div>
+
+          <div class="clearfix col-xs-3">
+            <label class="NODE_Port">Port</label>
+            <input class="form-control" type="text" placeholder="8545" ng-model="customNode.port" ng-class="Validator.isPositiveNumber(customNode.port) || customNode.port=='' ? 'is-valid' : 'is-invalid'">
+          </div>
+
+          <div class="clearfix col-xs-12">
+            <label><input type="checkbox" ng-model="customNode.httpBasicAuth" ng-true-value="{user:'',password:''}" ng-false-value="null" value="false"> HTTP Basic access authentication </label>
+          </div>
+
+          <div class="clearfix col-xs-6" ng-show="customNode.httpBasicAuth">
+            <label>User</label>
+            <input class="form-control" type="text" ng-model="customNode.httpBasicAuth.user" ng-class="customNode.httpBasicAuth &amp;&amp; customNode.httpBasicAuth.user.length > 0 ? 'is-valid' : 'is-invalid'">
+          </div>
+
+          <div class="clearfix col-xs-6" ng-show="customNode.httpBasicAuth">
+            <label>Password</label>
+            <input class="form-control" type="password" ng-model="customNode.httpBasicAuth.password" ng-class="customNode.httpBasicAuth &amp;&amp; customNode.httpBasicAuth.password.length > 0 ? 'is-valid' : 'is-invalid'">
+          </div>
+
+          <div class="clearfix col-xs-12 ">
+            <label class="radio"><input name="options" type="radio" ng-model="customNode.options" value="eth"><span class="radio__cheched-dot"></span> ETH </label>
+            <label class="radio"><input name="options" type="radio" ng-model="customNode.options" value="etc"><span class="radio__cheched-dot"></span> ETC </label>
+            <label class="radio"><input name="options" type="radio" ng-model="customNode.options" value="rop"><span class="radio__cheched-dot"></span> Ropsten </label>
+            <label class="radio"><input name="options" type="radio" ng-model="customNode.options" value="kov"><span class="radio__cheched-dot"></span> Kovan </label>
+            <label class="radio"><input name="options" type="radio" ng-model="customNode.options" value="rin"><span class="radio__cheched-dot"></span> Rinkeby </label>
+            <label class="radio"><input name="options" type="radio" ng-model="customNode.options" value="cus"><span class="radio__cheched-dot"></span> Custom </label>
+            <label ng-show="customNode.options == 'cus'"><input type="checkbox" ng-model="customNode.eip155" value="true"> Supports EIP-155 </label>
+          </div>
+
+          <div class="clearfix col-sm-6 col-sm-offset-6" ng-show="customNode.eip155">
+            <label>Chain ID</label>
+            <input class="form-control" type="text" placeholder="" ng-model="customNode.chainId" ng-class="Validator.isPositiveNumber(customNode.chainId) ? 'is-valid' : 'is-invalid'">
+          </div>
+        </section>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal" translate="x_Cancel">
+          Cancel
+        </button>
+        <button class="btn btn-primary" ng-click="saveCustomNode()" translate="NODE_CTA">
+          Save &amp; Use Custom Node
+        </button>
+      </div>
+
+
+    </section>
+  </section>
+</article>
+ 
+
+
+</header>
+
+<section class="container privacy-policy">
+  <h1>PRIVACY POLICY</h1>
+  <p> Last updated: August 17, 2018 </p>
+  <div class="privacy-policy-body">
+    <h3>INTRODUCTION</h3>
+    <p>Welcome to MyEtherWallet, a free, open-source, client-side tool for interacting
+      with the blockchain. MyEtherWallet, Inc. values privacy and we make a
+      concerted effort to minimize and, to the extent possible, eliminate the
+      exposure of personal data during the use of our interface. MyEtherWallet
+      does not collect, hold, or store keys, account information, or passwords.
+      We do not collect data passively, do not monetize the collection of data,
+      and do not use your data for marketing or advertising.</p>
+    <p>
+      To the extent we collect any personal information, this privacy policy
+      (“Policy”) describes how MyEtherWallet collects, uses, and shares personal
+      information of people who visit our website (the “Site”), use our mobile
+      application, MEWconnect (the “App”), or otherwise use our services
+      (collectively, the “Services”).
+    </p>
+    <p>
+      This Policy applies to anyone who accesses the Services. Please read the
+      Policy carefully to understand our practices regarding your information
+      and how we will treat it. By visiting the Site, App, and/or using the
+      Services, you acknowledge that the collection, use, and sharing of your
+      information will take place as described in this Policy.
+    </p>
+    <p>
+      So that we are clear about the terminology we are using, when we use the
+      phrase “Personal Information” in this Privacy Policy, we mean information
+      about an individual that (either by itself or when combined with information
+      from other available sources) allows that individual to be identified,
+      including, the individual’s name, telephone number, or e-mail address.
+    </p>
+    <h3>THE BLOCKCHAIN</h3>
+    <p>
+      Due to the inherent transparency of many blockchains, including the Ethereum
+      Blockchain, transactions that individuals broadcast via MyEtherWallet may
+      be publicly accessible. This includes, but is not limited to, your public
+      sending address, the public address of the receiver, the amount sent or
+      received, and any other data a user has chosen to include in a given
+      transaction. Information stored on a blockchain may be public, immutable,
+      and difficult or even impossible to remove or delete. Transactions and
+      addresses may reveal information about the user’s identity and information
+      can potentially be correlated now or in the future by any party who chooses
+      to do so, including law enforcement. Users are encouraged to review how
+      privacy and transparency on the blockchain works.
+    </p>
+    <h3>WHAT WE COLLECT</h3>
+    <p>
+      We collect information about you as described below. We use this
+      information to enhance your experience with our Services.
+    </p>
+    <h5>Information You Provide</h5>
+    <p>
+      We may collect Personal Information you choose to provide to us. For
+      example, when you contact us for support through the Services, you give
+      us with your e-mail address and any other information that you choose to
+      provide. Also, if you participate in a MyEtherWallet offer, give-away, or
+      promotion (“Promotion”), you provide your name, e-mail address, and
+      mailing address.
+    </p>
+    <h5>California Do Not Track Disclosures</h5>
+    <p>
+      MyEtherWallet does not track users over time and across third party
+      websites to provide targeted advertising and therefore does not respond
+      to Do Not Track (DNT) signals.
+    </p>
+    <h3>USE OF INFORMATION</h3>
+    <p>
+      We use the information that we have about you to provide support and certain Services to you.
+    </p>
+    <p>
+      We may use the Personal Information we collect from and about you to (1)
+      provide you with information or services that you request from us,
+      including to respond to your comments, questions, and/or provide customer
+      service; (2) monitor and analyze usage and trends and personalize and
+      improve the Services and your experience using the Services; and (3)
+      for any other purpose with your consent.
+    </p>
+    <h3>SHARING OF PERSONAL INFORMATION</h3>
+    <p>
+      We will not disclose your Personal Information other than as described
+      below, and we do not and will not sell your Personal Information to anyone.
+    </p>
+    <p>
+      We may share the Personal Information we collect from and about you (1)
+      to fulfill the purpose for which you provided it; (2) with your consent;
+      (3) for legal, protection, and safety purposes; (4) to comply with any
+      court order, law, or legal process, including to respond to any government
+      or regulatory request; (5) to protect the rights of MyEtherWallet, our
+      agents, customers, and others, including by enforcing our agreements,
+      policies, and terms of service; and (6) with those who need it to do work
+      for us (our Service Providers, as defined below).
+    </p>
+    <h5>Service providers</h5>
+    <p>
+      We may contract with third parties to perform functions related to the
+      Services (“Service Providers”). In general, Service Providers will have
+      access to your Personal Information only to the extent needed to perform
+      their business functions but may not use or share that personal
+      information for purposes outside the scope of their functions related to
+      the Services.
+    </p>
+    <h3>LINKS TO OTHER SITES</h3>
+    <p>
+      The Services contain links to other third-party websites or applications.
+      Once you click on such a link and leave the Site or are redirected to a
+      third-party website or application, you are no longer governed by this
+      Policy. Any information you provide on those sites is subject to that
+      third party’s privacy policy and we are not responsible for the privacy
+      and security practices and policies of those third-party sites or
+      applications.
+    </p>
+    <h3>OUR COMMITMENT TOWARDS CHILDREN'S PRIVACY</h3>
+    <p>
+      We do not direct the Services to, nor do we knowingly collect any Personal
+      Information from children under 13. Children under 13 are not eligible to
+      use the Services. If we learn that someone using our Services is under 13
+      years of age, we will take steps to remove any Personal Information from
+      our database and to prevent them from utilizing the Services.
+    </p>
+    <h3>SECURITY OF YOUR PERSONAL INFORMATION & RIGHTS</h3>
+    <p>
+      We are committed to protecting the security of Personal Information. We
+      have taken certain physical, administrative, and technical steps to help
+      safeguard the information we collect from and about you. While we take
+      steps to help ensure the integrity and security of our network and
+      systems, we cannot guarantee our security measures.
+    </p>
+    <p>In certain circumstances, you will also have the following rights:</p>
+    <ol>
+      <li>
+        Right to access: the right to request certain information about, access
+        to and copies of any Personal Information about you that we are holding
+        (please note that you are entitled to request one copy of the Personal
+        Information that we hold about you at no cost, but for any further copies,
+        we reserve the right to charge a reasonable fee based on administration
+        costs);
+      </li>
+      <li>
+        Right to rectification: the right to have your Personal Information
+        rectified if it is inaccurate or incomplete;
+      </li>
+      <li>
+        Right to erasure/“right to be forgotten”: where the processing of your
+        information is based on your consent, the right to withdraw that consent
+        and the right to request that we delete or erase your Personal
+        Information from our systems (however, this will not apply if we are
+        required to hold on to the information for compliance with any legal
+        obligation, or if we require the information to establish or defend any
+        legal claim);
+      </li>
+      <li>
+        Right to restriction of use of your information: the right to stop us
+        from using your Personal Information or limit the way in which we can
+        use it;
+      </li>
+      <li>
+        Right to data portability: the right to request that we return any
+        information you have provided in a structured, commonly used, and
+        machine-readable format, or that we send it directly to another company,
+        where technically feasible; and
+      </li>
+      <li>
+        Right to object: the right to object to our use of your Personal
+        Information including where we use it for our legitimate interests.
+      </li>
+    </ol>
+    <p>Requests in relation to the above rights should be sent to: <a href="mailto:privacy@myetherwallet.com">privacy@myetherwallet.com</a></p>
+    <h5>Legal Basis for Processing</h5>
+    <p>The following legal bases apply to the ways in which we use and share an individual’s Personal Information:</p>
+    <ol>
+      <li>
+        We rely on an individual’s consent to process Personal Information to
+        provide support and/or carry out Promotions. This consent can be
+        withdrawn at any time.
+      </li>
+      <li>
+        We also process the information provided by an individual in our
+        legitimate interests in ensuring our business is conducted legitimately
+        and to a high standard.
+      </li>
+    </ol>
+    <h3>RETENTION</h3>
+    <p>
+      We will retain the information you provide in order to process your
+      request, provide support, and/or carry out and fulfill our Promotions. If
+      you request support, we will retain your information for no longer than
+      six (6) months. If you participate in a Promotion, we will retain your
+      information until the Promotion is carried out and ninety (90) days after
+      any prize, reward, or offer is fulfilled. Your Personal Information will
+      then be deleted.
+    </p>
+    <h3>CONTACT INFORMATION</h3>
+    <p>
+      We welcome your comments or questions about this Policy. You may contact us at <a href="mailto:privacy@myetherwallet.com">privacy@myetherwallet.com</a>
+    </p>
+    <h3>CHANGES TO PRIVACY POLICY</h3>
+    <p>
+      We may modify this Policy from time to time. If we make any changes, we
+      will change the Last Updated date above. We also may provide additional
+      notice, as applicable, depending on the type of change. If you object to
+      any changes, you may stop using the Services. Your continued use of the
+      Services after we publish or otherwise provide notice about our changes
+      to the Policy means that you are consenting to the updated Policy.
+    </p>
+  </div>
+</section>
+<footer class="footer" role="content" aria-label="footer" ng-controller='footerCtrl' >
+
+  <article class="container" style="max-width: 1780px; margin: auto;">
+<div class="footer-row">
+    <section class="">
+
+      <a href=".">
+      	<div class="logo-footer">
+	        <img src="images/footer-logo.svg" alt="logo footer" class="logo-footer-img">
+	        <img src="images/foton-logo-text.png" alt="" style="width: 80px" class="logo-footer-text">
+	      </div>
+      </a>
+
+        <p translate="FOOTER_1" class="footer-text">
+          Free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( myetherwallet.com ) before unlocking your wallet.
+        </p>
+		<ul class="footer-navigation-one">
+			<li><a aria-label="knowledge base" href="https://kb.myetherwallet.com/" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+				Knowledge Base |
+			</a></li>
+			<li> <a data-target="#disclaimerModal" data-toggle="modal" target="_blank" rel="noopener noreferrer" role="link" tabindex="0"  translate="FOOTER_4">
+				Disclaimer |
+			</a></li>
+			<li><a href="https://www.myetherwallet.com/privacy-policy.html" target="_blank">
+				Privacy policy
+			</a></li>
+		</ul>
+    </section>
+	<div class="footer-big-menu">
+      <ul class="footer-navigation-two">
+        <li><a aria-label="website via my ether wallet dot com" href="https://lightnetwork.io" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          lightnetwork.io
+        </a></li>
+        <li><a aria-label="myetherwallet team" href="https://lightnetwork.io" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          Foton Wallet Team
+        </a></li>
+        <li><a aria-label="support email" href="mailto:support@mlightnetwork.io" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          Email support: support@lightnetwork.io
+        </a></li>
+        <li><a href="https://www.myetherwallet.com/helpers.html" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          Unit Converters &amp; ENS Debugging
+        </a></li>
+        <li><a href="https://www.myetherwallet.com/signmsg.html" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          Sign Message
+        </a></li>
+      </ul>
+      
+      <ul class="footer-navigation-three">
+        <li>
+        <a aria-label="website via github URL" href="https://kvhnuke.github.io/etherwallet/" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          kvhnuke.github.io/etherwallet
+        </a>
+     </li>
+        <li><a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          Github: Current Site &amp; CX
+        </a></li>
+        <li><a aria-label="download & run locally" href="https://github.com/kvhnuke/etherwallet/releases/latest" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          Github: Latest Release
+        </a></li>
+        <li> <a aria-label="my ether wallet chrome extension" href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm?hl=en" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          MyEtherWallet Chrome Extension
+        </a></li>
+        <li> <a aria-label="Anti-Phishing chrome extension" href="https://chrome.google.com/webstore/detail/etheraddresslookup/pdknmigbbbhmllnmgdfalmedcmcefdfn" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          EAL "Don't Get Phish'd" Chrome Extension
+        </a></li>
+      </ul>
+      </div>
+		<div style="padding-left: 15px">
+			<ul class="soc-btn">
+				<li><a href="#"><img src="images/Facebook.png" alt=""></a></li>
+				<li><a href="#"><img src="images/M.png" alt=""></a></li>
+				<li><a href="#"><img src="images/reddit.png" alt=""></a></li>
+				<li><a href="#"><img src="images/C.png" alt=""></a></li>
+				<li><a href="#"><img src="images/insta.png" alt=""></a></li>
+				<li><a href="#"><img src="images/Twitter.png" alt=""></a></li>
+			</ul>
+			
+			<ul class="get-app">
+				<li><a href="#"><img src="images/appstore-icon.svg" alt=""></a></li>
+				<li><a href="#"><img src="images/googleplay-icon.svg" alt=""></a></li>
+			</ul>
+			<p class="footer-copiright">© 2018 Foton Wallet, Inc</p>
+		</div>
+</div>
+  </article>
+
+</div>
+
+
+</footer>
+
+</main>
+</body>
+</html>
+
